@@ -1,4 +1,4 @@
-import prisma from '../config/dbConnect/prisma'
+import prisma from '../config/dbConnect.js'
 
 const userRepository = {
 

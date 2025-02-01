@@ -25,7 +25,7 @@ const userService = {
     }, 
     
     async findAllUsers(filters) {
-        return userRepository.update(filters)
+        return userRepository.findAll(filters)
     }
 
 }

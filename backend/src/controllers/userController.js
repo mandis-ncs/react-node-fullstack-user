@@ -11,7 +11,7 @@ const userController = {
         }
     },
 
-    async updeteUser(req, res, next) {
+    async updateUser(req, res, next) {
         try {
             const updated = await userService.updateUser(req.params.id, req.body)
             res.status(200).json(updated)
