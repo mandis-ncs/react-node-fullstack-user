@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from 'react'
 import './Home.css'
 import api from '../../services/api.js'
-import UserForm from '../../components/organisms/UserForm/UserForm'
-import UserCard from '../../components/molecules/UseCard/UseCard'
+import UserForm from '../../components/organisms/UserForm/UserForm.jsx'
+import UserCard from '../../components/molecules/UseCard/UseCard.jsx'
 
 function Home() {
   const [users, setUsers] = useState([])

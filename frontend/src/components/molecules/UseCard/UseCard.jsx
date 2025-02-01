@@ -1,6 +1,6 @@
-import './UserCard.css'
+import './UseCard.css'
 import TrashIcon from '../../../assets/imgs/trash.svg'
-import Button from '../../atoms/Button'
+import Button from '../../atoms/Button/Button.jsx'
 import PropTypes from 'prop-types'
 
 function UserCard({ user, onDelete }) {
