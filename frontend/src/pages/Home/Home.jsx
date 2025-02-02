@@ -1,4 +1,5 @@
 import './Home.css'
+import '../../styles/global.css'
 import UserForm from '../../components/organisms/UserForm/UserForm.jsx'
 import UserCard from '../../components/molecules/UseCard/UseCard.jsx'
 import useUsers from '../../hooks/useUsers.js'
