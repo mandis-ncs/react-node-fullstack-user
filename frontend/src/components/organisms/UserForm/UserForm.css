@@ -10,3 +10,7 @@
     width: 400px;
     margin-bottom: 20px;
 }
+
+.form .error {
+    color: brown;
+}

@@ -23,7 +23,7 @@ function UserCard({ user, onDelete }) {
 
 UserCard.propTypes = {
     user: PropTypes.shape({
-        id: PropTypes.number.isRequired,
+        id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         email: PropTypes.string.isRequired,
     }).isRequired,
