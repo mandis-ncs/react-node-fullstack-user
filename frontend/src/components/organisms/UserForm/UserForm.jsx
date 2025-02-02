@@ -1,47 +1,68 @@
 import './UserForm.css'
-import Input from '../../atoms/Input/Input'
-//import Button from '../../atoms/Button/Button'
 import Title from '../../atoms/Title/Title'
 import { useFormUtils } from '../../../utils/useFormUtils.js'
 import { validationSchemaUser } from '../../../schemas/Schema'
 import { Controller } from 'react-hook-form'
 import { useCallback } from 'react'
-//import useUsers from '../../hooks/useUsers.js'
+import useUsers from '../../../hooks/useUsers.js'
+
 
 function UserForm() {
+    const { errors, trigger, getValues, control } = useFormUtils(validationSchemaUser, {
+        email: '',
+        name: ''
+    })
 
-    const { errors, register, trigger, control } = useFormUtils(validationSchemaUser,
-        {
-            email: '',
-            name: ''
-        }
-    );
+    const { createUser } = useUsers()
 
-    //const { createUser } = useUsers()
-
-    const handleSubmit = useCallback ( async () => {
+    const handleSubmit = useCallback(async (event) => {
         const isValid = await trigger()
-        console.log(errors)
+
         if (isValid) {
-            console.log('ok')
+            console.log("DADOS SENDO ENVIADOS", getValues())
+            const dataForm = getValues()
+            createUser(event, dataForm)
+        } else {
+            console.log('Erros:', errors);
         }
-    }, [trigger, errors])
+    }, [errors, trigger, getValues, createUser])
 
     return (
         <form className="form">
             <Title>Register</Title>
+
             <Controller
                 name="name"
                 control={control}
+                defaultValue=""
                 render={({ field }) => (
-                    <Input
-                        value={field.name}
-                        placeholder="Name" type="text" />
+                    <input
+                        {...field}
+                        value={field.value || ""}
+                        onChange={field.onChange}
+                        placeholder="Name"
+                    />
                 )}
             />
+            {errors.name && <p className="error">{errors.name.message}</p>}
 
-            <Input {...register("email")} error={!!errors.email} placeholder="Email" type="email" />
-            <button type="button" onClick={() => handleSubmit()}>Register</button>
+            <Controller
+                name="email"
+                control={control}
+                render={({ field }) => (
+                    <input
+                        {...field}
+                        value={field.value || ""}
+                        onChange={field.onChange}
+                        placeholder="Email"
+                    />
+                )}
+            />
+            {errors.email && <p className="error">{errors.email.message}</p>}
+
+            <button type="button" onClick={(event) => handleSubmit(event)}>
+                Register
+            </button>
         </form>
     )
 }

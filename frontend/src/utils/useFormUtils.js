@@ -1,25 +1,18 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-export const useFormUtils = (
-    validationSchema,
-    defaultValues
-) => {
+export const useFormUtils = (validationSchema, defaultValues) => {
     const {
         control,
         formState: { errors },
+        trigger,
+        reset,
         getValues,
         setValue,
-        handleSubmit,
-        reset,
         watch,
-        register,
-        formState,
-        trigger
     } = useForm({
         resolver: yupResolver(validationSchema),
-        reValidateMode: 'onChange',
-        mode: 'all',
+        mode: 'onChange',
         defaultValues
     });
 
@@ -31,10 +24,7 @@ export const useFormUtils = (
         getValues,
         setValue,
         resetForm,
-        handleSubmit,
-        register,
         trigger,
-        watch,
-        formState
+        watch
     };
-}
+};

@@ -19,13 +19,10 @@ function useUsers() {
         }
     }
 
-    const createUser = async (event) => {
+    const createUser = async (event, dataForm) => {
         event.preventDefault()
         try {
-            await api.post('/users', {
-                name: inputName.current.value,
-                email: inputEmail.current.value,
-            })
+            await api.post('/users', dataForm)
             getUsers();
         } catch (error) {
             console.error('Error creating user:', error)

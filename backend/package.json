@@ -17,7 +17,8 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "joi": "^17.13.3",
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "prisma": "^6.3.0"
